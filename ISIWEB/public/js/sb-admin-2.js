@@ -27,7 +27,7 @@
     }
   });
 
-  // Scroll to top button appear
+  // Scroll to top button appear 
   $(document).on('scroll', function() {
     var scrollDistance = $(this).scrollTop();
     if (scrollDistance > 100) {
@@ -47,3 +47,23 @@
   });
 
 })(jQuery); // End of use strict
+
+
+  document.getElementById('buttonSupplier').addEventListener('click', loadJSON);
+                  function loadJSON(){
+                      fetch('https://outsystems-server.herokuapp.com/Supplier')
+                      .then(function(response){
+                        return response.json();
+                      })
+                      .then(function(data){
+                        let html = '';
+                        data.forEach(function(supplier){
+                            html += `
+                            <li>${supplier.name} ${supplier.address}</li>
+                            `;
+                        });
+                        document.getElementById('result').innerHTML = html;
+                      })
+                      .catch(error => console.error(error))
+                      console.log("es gay");
+                    }

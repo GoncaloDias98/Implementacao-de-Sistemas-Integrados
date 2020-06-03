@@ -73,4 +73,3 @@ app.use('/public', express.static('public'));
 app.use('/login', require('./controllers/login.route'));
 app.use('/logout', require('./controllers/logout.route'));
 app.use('/profile', require('./controllers/profile.route'));
-
