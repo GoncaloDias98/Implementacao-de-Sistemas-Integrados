@@ -49,7 +49,7 @@
 })(jQuery); // End of use strict
 
 
-  document.getElementById('buttonSupplier').addEventListener('click', loadJSON);
+
                   function loadJSON(){
                       fetch('https://outsystems-server.herokuapp.com/Supplier')
                       .then(function(response){
@@ -59,7 +59,16 @@
                         let html = '';
                         data.forEach(function(supplier){
                             html += `
-                            <li>${supplier.name} ${supplier.address}</li>
+                            <table style="width:100%">
+                              <tr>
+                                <th>Nome</th>
+                                <th>Address</th>
+                              </tr>
+                              <tr>
+                                <td>${supplier.name}</td>
+                                <td>${supplier.address}</td>
+                              </tr>
+                            </table>
                             `;
                         });
                         document.getElementById('result').innerHTML = html;
